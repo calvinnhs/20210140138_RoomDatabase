@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -90,6 +92,7 @@ fun EntrySiswaBody(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormInputSiswa(
     detailSiswa: DetailSiswa,
@@ -101,6 +104,29 @@ fun FormInputSiswa(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
     ) {
-
+        OutlinedTextField(
+            value = detailSiswa.nama,
+            onValueChange ={onValueChange(detailSiswa.copy(nama = it))},
+            label = { Text(stringResource(R.string.nama)) },
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled
+        )
+        OutlinedTextField(
+            value = detailSiswa.alamat,
+            onValueChange ={onValueChange(detailSiswa.copy(alamat = it))},
+            label = { Text(stringResource(R.string.alamat)) },
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled
+        )
+        OutlinedTextField(
+            value = detailSiswa.telpon,
+            onValueChange ={onValueChange(detailSiswa.copy(telpon = it))},
+            label = { Text(stringResource(R.string.telpon)) },
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled
+        )
     }
 }
