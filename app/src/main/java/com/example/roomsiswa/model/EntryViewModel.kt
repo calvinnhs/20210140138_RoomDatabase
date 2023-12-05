@@ -22,6 +22,11 @@ class EntryViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel(){
             repositoriSiswa.insertSiswa(uiStateSiswa.detailSiswa.toSiswa())
         }
     }
+
+    fun updateUiState(detailSiswa: DetailSiswa){
+        uiStateSiswa =
+            UIStateSiswa(detailSiswa = detailSiswa, isEntryValid = validasiInput(detailSiswa))
+    }
 }
 data class UIStateSiswa(
     val detailSiswa: DetailSiswa = DetailSiswa(),
